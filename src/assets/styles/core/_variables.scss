@@ -10,13 +10,12 @@ $url-public-fonts : '../fonts';
 /* font
 ---------------------------------------------------------------*/
 $font-primary: 'Exo';
-$font-secondary: 'Verdana';
 $font-global: 'Arial';
 
 $font-base-size : 62.5%; /* 10px*/
 $font-body-size : 1.3rem; 		/* 13px*/
 $font-heading : $font-primary;
-$font-text : $font-secondary;
+$font-text : $font-global;
 
 
 /* typography
@@ -26,8 +25,10 @@ $font-text : $font-secondary;
 ---------------------------------------------------------------*/
 $button-bg-primary: '';
 $button-bg-secondary: '';
+
 /* forms
 ---------------------------------------------------------------*/
+
 
 /* color
 ---------------------------------------------------------------*/
@@ -37,20 +38,22 @@ $color-branding: (
 );
 
 $color-semantic: (
-  error: red,
-  warning: yellow,
-  success: green,
-  information: blue
+  error: #ff0000,
+  warning: #ffd0a5,
+  success: #059d2b,
+  information: #5075ea
 );
 
 $color-neutral: (
   white: white,
   black: #5d5d5d,
-  gray: gray
+  gray-primary: #5d5d5d,
+  gray-secondary: #7f7f7f,
+  color-error: #c60000
 );
 
 $color-borders: (
-    primary: '#cdcdcd'
+  primary: '#d8d8d8'
 );
 
 $color-text: map-get($color-neutral, black);
