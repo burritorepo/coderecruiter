@@ -17,3 +17,11 @@ gulp.task('sass', function () {
 gulp.task('sass:watch', function () {
   gulp.watch('./src/assets/styles/**/*.scss', gulp.series('sass'));
 });
+
+
+const imagemin = require('gulp-imagemin');
+gulp.task('imagemin', () =>
+    gulp.src('./src/assets/images/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('./dist/assets/images'))
+);
