@@ -5,11 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Coderecruiter - Register</title>
-  <link rel="stylesheet" href="./dist/assets/styles/login.css">
+  <title>coderecruiter</title>
+  <link rel="stylesheet" href="./dist/assets/styles/register.css">
 </head>
 
-<body class="page-login">
+<body class="page-register">
   <div class="wrapper">
     <header class="header">
       <div class="container">
@@ -21,44 +21,175 @@
     <main class="main">
       <div class="container">
         <div class="form">
-          <div class="form-title">
-            <h1>Login</h1>
-            <h2>
-              Bienvenido!
-              <span>Por favor ingresa tus datos</span>
-            </h2>
-          </div>
-          <div class="form-controls">
-            <div class="form-row">
-              <label>Usuario</label>
-              <input class="form-input" type="text">
-            </div>
-            <div class="form-row">
-              <label>Password</label>
-              <input class="form-input" type="password">
-            </div>
-            <div class="form-row form-row-flex">
-              <div class="form-col-left">
-                <div class="form-flex">
-                  <input type="checkbox">
-                  <label for="">Recordar</label>
+          <form>
+            <div class="form-block">
+              <div class="form-title">
+                <h1>Register</h1>
+                <h2>
+                  Datos Personales!
+                  <span>Por favor completa tus datos</span>
+                </h2>
+              </div>
+              <div class="form-controls">
+                <div class="row">
+                  <div class="col col6">
+                    <div class="form-row">
+                      <label>Nombre</label>
+                      <input required class="js_name form-input" type="text">
+                    </div>
+                  </div>
+                  <div class="col col6">
+                    <div class="form-row">
+                      <label>Apellido</label>
+                      <input required class="js_lastname form-input" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col6">
+                    <div class="form-row">
+                      <label>Telefono - Celular</label>
+                      <input required class="js_phone form-input" type="text">
+                    </div>
+                  </div>
+                  <div class="col col6">
+                    <div class="form-row">
+                      <label>Direccion</label>
+                      <input required class="js_direction form-input" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col6">
+                    <div class="form-row">
+                      <label>Sexo</label>
+                      <div class="row row-radio">
+                        <div class="col">
+                          <label>F <input class="js_radio-a" required type="radio" checked name="sex"></label>
+                        </div>
+                        <div class="col">
+                          <label>M <input class="js_radio-b" required type="radio" name="sex"></label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col6">
+                    <div class="form-row">
+                      <label>Usuario</label>
+                      <input required class="js_user form-input" type="text">
+                    </div>
+                  </div>
+                  <div class="col col6">
+                    <div class="form-row">
+                      <label>Contraseña</label>
+                      <input required class="js_password form-input" type="password">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col12">
+                    <div class="form-row">
+                      <label>Correo Electronico</label>
+                      <input required class="js_email form-input" type="email">
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="form-col-right">
-                <a class="color-primary" href="">Olvidaste tu contraseña?</a>
+            </div>
+            <div class="form-block">
+              <div class="form-title">
+                <h2>
+                  Datos de la carrera
+                  <span>Por favor completa tus datos</span>
+                </h2>
+              </div>
+              <div class="form-controls">
+                <div class="row">
+                  <div class="col col6">
+                    <div class="form-row">
+                      <label>Especialidad</label>
+                      <select required class="js_career form-select">
+                        <option value="">Selecciona</option>
+                        <option value="1">Front End</option>
+                        <option value="2">Back End</option>
+                        <option value="3">Full Stack</option>
+                        <option value="4">Scrum Master</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col12">
+                    <div class="form-row">
+                      <label>Cuentanos sobre ti</label>
+                      <textarea minlength="20" required class="js_about form-textarea" name="" id="" cols="30"
+                        rows="10">
+
+                      </textarea>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="form-row">
-              <button type="submit" class="button button-primary">Login</button>
+            <div class="form-block">
+              <div class="form-title">
+                <h2>
+                  Redes Sociales
+                  <span>Por favor completa tus datos</span>
+                </h2>
+              </div>
+              <div class="form-controls">
+                <div class="row">
+                  <div class="col col12">
+                    <div class="form-row">
+                      <label>Facebook</label>
+                      <input required class="js_fb form-input" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col12">
+                    <div class="form-row">
+                      <label>Twitter</label>
+                      <input required class="js_tw form-input" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col12">
+                    <div class="form-row">
+                      <label>Github</label>
+                      <input required class="js_git form-input" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col12">
+                    <div class="form-row">
+                      <label>Linkedin</label>
+                      <input required class="js_link form-input" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col12">
+                    <div class="form-row">
+                      <label>Codepen</label>
+                      <input required class="js_cod form-input" type="text">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col12">
+                    <button type="submit" class="js_btn button button-primary">Registrar</button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="form-row form-row-footer">
-              <p>No tienes una cuenta?
-                <a class="color-primary">Registrate aqui</a>
-              </p>
-            </div>
-          </div>
+          </form>
         </div>
-      </div>
     </main>
     <footer class="footer">
       <div class="container">
@@ -71,17 +202,113 @@
   </div>
 
   <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+  <script src="./dist/assets/scripts/firebaseKey.js"></script>
   <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyAdtTmQaA54G6SFtiiSqTjyYytld2iNGno",
-      authDomain: "coderecruiter-a4ce8.firebaseapp.com",
-      databaseURL: "https://coderecruiter-a4ce8.firebaseio.com",
-      projectId: "coderecruiter-a4ce8",
-      storageBucket: "coderecruiter-a4ce8.appspot.com",
-      messagingSenderId: "868741664185"
-    };
-    firebase.initializeApp(config);
+    function getValues() {
+      let name,
+        lastname,
+        cellphone,
+        direction,
+        sexF,
+        sexM,
+        user,
+        password,
+        email,
+        career,
+        about,
+        fb,
+        tw,
+        git,
+        link,
+        cod;
+
+      name = returnValue('.js_name');
+      lastname = returnValue('.js_lastname');
+      cellphone = returnValue('.js_phone');
+      direction = returnValue('.js_direction');
+      sexF = document.querySelector('.js_radio-a').checked;
+      sexM = document.querySelector('.js_radio-b').checked;
+      user = returnValue('.js_name');
+      password = returnValue('.js_password');
+      email = returnValue('.js_email');
+      dateCareer = returnValue('.js_career');
+      about = returnValue('.js_about');
+      facebook = returnValue('.js_fb');
+      twitter = returnValue('.js_tw');
+      github = returnValue('.js_git');
+      linkedin = returnValue('.js_link');
+      codepen = returnValue('.js_cod');
+
+      let sex = (sexF) ? 'F' : 'M';
+
+      //values
+      const infoPersonal = {
+        about,
+        cellphone,
+        dateCareer: '',
+        direction,
+        lastname,
+        name,
+        sex,
+        social: {
+          codepen: '',
+          facebook: '',
+          github: '',
+          linkedin: '',
+          twitter: ''
+        }
+      };
+
+      return {
+        auth: {
+          email,
+          password
+        },
+        infoPersonal
+      }
+    }
+
+    function returnValue(name) {
+      return document.querySelector(name).value;
+    }
+
+    function registerInfoPersonal() {
+      const info = getValues();
+      const { infoPersonal } = info;
+
+      console.log('infopersonal', infoPersonal);
+
+      firebase.database().ref('users/' + window.firebase.auth().currentUser.uid).set(infoPersonal);
+      //firebase
+      //firebase.database().ref('users/').set(info);
+    }
+
+    function registerUser(email, password) {
+      const info = getValues();
+      const { auth } = info;
+
+      firebase.auth().createUserWithEmailAndPassword(auth.email, auth.password)
+        .catch(function (error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          // ...
+        });
+    }
+
+    // FIRE EVENT
+    function submitForm(e) {
+      e.preventDefault();
+      registerUser();
+      registerInfoPersonal();
+    }
+    document.querySelector('form').addEventListener('submit', submitForm);
+
+
+    var starCountRef = firebase.database().ref('users/');
+    starCountRef.on('value', function (snapshot) {
+      console.log('snat', snapshot)
+    });
   </script>
 </body>
 

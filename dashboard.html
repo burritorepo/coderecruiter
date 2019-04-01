@@ -6,55 +6,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Coderecruiter</title>
-  <!-- <link rel="stylesheet" href="./dist/assets/styles/dashboard.css"> -->
-  <style>
-    .card {
-      width: 200px;
-      height: 260px;
-      perspective: 600px;
-    }
-
-    .card .card-inner {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transition: transform 1s;
-      transform-style: preserve-3d;
-      transform-origin: center right;
-    }
-
-    .card .card-inner:hover {
-      transform: translateX(-100%) rotateY(-180deg);
-    }
-
-    .card-face {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      backface-visibility: hidden;
-    }
-
-    .card .card-front {
-      background: red;
-    }
-
-    .card .card-back {
-      background: blue;
-      transform: rotateY(180deg);
-    }
-  </style>
+  <link rel="stylesheet" href="./dist/assets/styles/dashboard.css">
 </head>
 
 <body>
-  <div class="card">
-    <div class="card-inner">
-      <div class="card-face card-front">
-        Datos del front
+  <div class="wrapper">
+    <header class="header">
+      <div class="container">
+        <a class="header-logo" href="#">
+          <img src="./dist/assets/images/logo.png" alt="">
+        </a>
       </div>
-      <div class="card-face card-back">
-        Datos del back
+    </header>
+    <main class="main">
+      <div class="container">
+        <aside>
+
+        </aside>
+        <section>
+          <div class="card">
+            <div class="card-inner">
+              <div class="card-face card-front">
+                Datos del front
+              </div>
+              <div class="card-face card-back">
+                Datos del back
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <p>Todos los derechos reservados | 2019</p>
+        <a href="" class="logo">
+          <img width="80" height="19" src="./dist/assets/images/logo.png" alt="">
+        </a>
+      </div>
+    </footer>
   </div>
 </body>
 
