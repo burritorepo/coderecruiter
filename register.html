@@ -230,7 +230,8 @@
           git,
           link,
           cod,
-          sex;
+          sex,
+          picture;
 
         name = returnValue('.js_name');
         lastname = returnValue('.js_lastname');
@@ -249,6 +250,7 @@
         linkedin = returnValue('.js_link');
         codepen = returnValue('.js_cod');
         sex = (sexF) ? 'F' : 'M';
+        picture = document.querySelector('.js_file').files[0].name;
 
         //values
         const infoPersonal = {
@@ -259,6 +261,7 @@
           lastname,
           name,
           sex,
+          picture,
           social: {
             codepen,
             facebook,
@@ -288,8 +291,9 @@
         db.collection("users").add(infoPersonal)
           .then(function (docRef) {
             //alert("La informacion se creo correctamente");
+            document.querySelector('body').classList.remove('is-loading');
             setTimeout(function () {
-              //window.location.href = 'dashboard.html';
+              window.location.href = 'dashboard.html';
             }, 2000);
           })
           .catch(function (error) {
@@ -302,8 +306,9 @@
 
         firebase.auth().createUserWithEmailAndPassword(auth.email, auth.password)
           .then(function (user) {
+            registerInfoPersonal();
             firebase.auth().currentUser.sendEmailVerification().then(function (e) {
-              console.log('email sent', e)
+              console.log('email sent', e);
             }).catch(function (error) {
               // An error happened.
             });
@@ -320,7 +325,7 @@
       function submitForm(e) {
         e.preventDefault();
         registerUser();
-        registerInfoPersonal();
+        document.querySelector('body').classList.add('is-loading');
       }
       document.querySelector('form').addEventListener('submit', submitForm);
     </script>

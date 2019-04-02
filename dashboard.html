@@ -24,16 +24,10 @@
 
         </aside>
         <section>
-          <div class="card">
-            <div class="card-inner">
-              <div class="card-face card-front">
-                Datos del front
-              </div>
-              <div class="card-face card-back">
-                Datos del back
-              </div>
-            </div>
+          <div id="inner">
+
           </div>
+          
         </section>
       </div>
     </main>
@@ -54,6 +48,17 @@
       db.collection("users").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           console.log('doc', doc.data())
+          let template = "<div class='card'>"+
+            "<div class='card-inner'>"+
+              "<div class='card-face card-front'>"+
+                "<img src='./dist/users/"+ doc.data().picture +"'>"+
+              "</div>"+
+              "<div class='card-face card-back'>"+
+                
+              "</div>"+
+            "</div>"+
+          "</div>";
+          document.querySelector('#inner').innerHTML += template; 
         });
       });
     }

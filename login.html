@@ -91,7 +91,8 @@
       firebase.auth().signInWithEmailAndPassword(infoUser.email, infoUser.password)
         .catch(function (error) {
           // Handle Errors here.
-          console.log('error!!!')
+          //  console.log('error!!!')
+          alert("Error " + error.message)
           var errorCode = error.code;
           var errorMessage = error.message;
           // ...
@@ -102,7 +103,7 @@
       firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
           // User is signed in.
-          console.log('esta logueado');
+          console.log('esta logueado', user);
         } else {
           // No user is signed in.
           console.log('esta deslogueado');
@@ -115,6 +116,8 @@
       // FIRE EVENT
       document.querySelector('form').addEventListener('submit', initAuth);
     }
+
+    init();
   </script>
 </body>
 
