@@ -46,6 +46,20 @@
       </div>
     </footer>
   </div>
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+  <script src="./dist/assets/scripts/firebaseKey.js"></script>
+  <script>
+    function readDB() {
+      const db = firebase.firestore();
+      db.collection("users").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          console.log('doc', doc.data())
+        });
+      });
+    }
+
+    readDB();
+  </script>
 </body>
 
 </html>

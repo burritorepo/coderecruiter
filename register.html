@@ -65,10 +65,14 @@
                       <label>Sexo</label>
                       <div class="row row-radio">
                         <div class="col">
-                          <label>F <input class="js_radio-a" required type="radio" checked name="sex"></label>
+                          <label>F
+                            <input class="js_radio-a" required type="radio" checked name="sex">
+                          </label>
                         </div>
                         <div class="col">
-                          <label>M <input class="js_radio-b" required type="radio" name="sex"></label>
+                          <label>M
+                            <input class="js_radio-b" required type="radio" name="sex">
+                          </label>
                         </div>
                       </div>
                     </div>
@@ -89,10 +93,16 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col col12">
+                  <div class="col col6">
                     <div class="form-row">
                       <label>Correo Electronico</label>
                       <input required class="js_email form-input" type="email">
+                    </div>
+                  </div>
+                  <div class="col col6">
+                    <div class="form-row">
+                      <label>Foto</label>
+                      <input required class="js_file " type="file">
                     </div>
                   </div>
                 </div>
@@ -124,8 +134,7 @@
                   <div class="col col12">
                     <div class="form-row">
                       <label>Cuentanos sobre ti</label>
-                      <textarea minlength="20" required class="js_about form-textarea" name="" id="" cols="30"
-                        rows="10">
+                      <textarea minlength="20" required class="js_about form-textarea" name="" id="" cols="30" rows="10">
 
                       </textarea>
                     </div>
@@ -199,117 +208,122 @@
         </a>
       </div>
     </footer>
-  </div>
+    </div>
 
-  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
-  <script src="./dist/assets/scripts/firebaseKey.js"></script>
-  <script>
-    function getValues() {
-      let name,
-        lastname,
-        cellphone,
-        direction,
-        sexF,
-        sexM,
-        user,
-        password,
-        email,
-        career,
-        about,
-        fb,
-        tw,
-        git,
-        link,
-        cod;
-
-      name = returnValue('.js_name');
-      lastname = returnValue('.js_lastname');
-      cellphone = returnValue('.js_phone');
-      direction = returnValue('.js_direction');
-      sexF = document.querySelector('.js_radio-a').checked;
-      sexM = document.querySelector('.js_radio-b').checked;
-      user = returnValue('.js_name');
-      password = returnValue('.js_password');
-      email = returnValue('.js_email');
-      dateCareer = returnValue('.js_career');
-      about = returnValue('.js_about');
-      facebook = returnValue('.js_fb');
-      twitter = returnValue('.js_tw');
-      github = returnValue('.js_git');
-      linkedin = returnValue('.js_link');
-      codepen = returnValue('.js_cod');
-
-      let sex = (sexF) ? 'F' : 'M';
-
-      //values
-      const infoPersonal = {
-        about,
-        cellphone,
-        dateCareer: '',
-        direction,
-        lastname,
-        name,
-        sex,
-        social: {
-          codepen: '',
-          facebook: '',
-          github: '',
-          linkedin: '',
-          twitter: ''
-        }
-      };
-
-      return {
-        auth: {
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <script src="./dist/assets/scripts/firebaseKey.js"></script>
+    <script>
+      function getValues() {
+        let name,
+          lastname,
+          cellphone,
+          direction,
+          sexF,
+          sexM,
+          user,
+          password,
           email,
-          password
-        },
-        infoPersonal
+          career,
+          about,
+          fb,
+          tw,
+          git,
+          link,
+          cod,
+          sex;
+
+        name = returnValue('.js_name');
+        lastname = returnValue('.js_lastname');
+        cellphone = returnValue('.js_phone');
+        direction = returnValue('.js_direction');
+        sexF = document.querySelector('.js_radio-a').checked;
+        sexM = document.querySelector('.js_radio-b').checked;
+        user = returnValue('.js_name');
+        password = returnValue('.js_password');
+        email = returnValue('.js_email');
+        dateCareer = returnValue('.js_career');
+        about = returnValue('.js_about');
+        facebook = returnValue('.js_fb');
+        twitter = returnValue('.js_tw');
+        github = returnValue('.js_git');
+        linkedin = returnValue('.js_link');
+        codepen = returnValue('.js_cod');
+        sex = (sexF) ? 'F' : 'M';
+
+        //values
+        const infoPersonal = {
+          about,
+          cellphone,
+          dateCareer: '',
+          direction,
+          lastname,
+          name,
+          sex,
+          social: {
+            codepen,
+            facebook,
+            github,
+            linkedin,
+            twitter
+          }
+        };
+
+        return {
+          auth: {
+            email,
+            password
+          },
+          infoPersonal
+        }
       }
-    }
 
-    function returnValue(name) {
-      return document.querySelector(name).value;
-    }
+      function returnValue(name) {
+        return document.querySelector(name).value;
+      }
 
-    function registerInfoPersonal() {
-      const info = getValues();
-      const { infoPersonal } = info;
+      function registerInfoPersonal() {
+        const db = firebase.firestore();
+        const { infoPersonal } = getValues();
 
-      console.log('infopersonal', infoPersonal);
+        db.collection("users").add(infoPersonal)
+          .then(function (docRef) {
+            //alert("La informacion se creo correctamente");
+            setTimeout(function () {
+              //window.location.href = 'dashboard.html';
+            }, 2000);
+          })
+          .catch(function (error) {
+            console.error("Error adding document: ", error);
+          });
+      }
 
-      firebase.database().ref('users/' + window.firebase.auth().currentUser.uid).set(infoPersonal);
-      //firebase
-      //firebase.database().ref('users/').set(info);
-    }
+      function registerUser(email, password) {
+        const { auth } = getValues();
 
-    function registerUser(email, password) {
-      const info = getValues();
-      const { auth } = info;
+        firebase.auth().createUserWithEmailAndPassword(auth.email, auth.password)
+          .then(function (user) {
+            firebase.auth().currentUser.sendEmailVerification().then(function (e) {
+              console.log('email sent', e)
+            }).catch(function (error) {
+              // An error happened.
+            });
+          })
+          .catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+          });
+      }
 
-      firebase.auth().createUserWithEmailAndPassword(auth.email, auth.password)
-        .catch(function (error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // ...
-        });
-    }
-
-    // FIRE EVENT
-    function submitForm(e) {
-      e.preventDefault();
-      registerUser();
-      registerInfoPersonal();
-    }
-    document.querySelector('form').addEventListener('submit', submitForm);
-
-
-    var starCountRef = firebase.database().ref('users/');
-    starCountRef.on('value', function (snapshot) {
-      console.log('snat', snapshot)
-    });
-  </script>
+      // FIRE EVENT
+      function submitForm(e) {
+        e.preventDefault();
+        registerUser();
+        registerInfoPersonal();
+      }
+      document.querySelector('form').addEventListener('submit', submitForm);
+    </script>
 </body>
 
 </html>
